@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>Hello World</title>
+    <script src="./js/A-frame.js"></script>
+    <script src="./js/arjs.js"></script>
+    <style>
+  .arjs-loader {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .arjs-loader div {
+    text-align: center;
+    font-size: 1.25em;
+    color: white;
+  }
+</style>
+  </head>
+  <body>
+  <a-scene
+    vr-mode-ui="enabled: false;"
+    renderer="logarithmicDepthBuffer: true;"
+    embedded
+    arjs="trackingMethod: best; sourceType: webcam;detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+    <a-assets>
+        <a-asset-item id="bastoncino" src="./3D/Bastoncino_Zuccherato.glb"></a-asset-item>
+    </a-assets>
+    <a-marker type="barcode" value="5">
+      <a-gltf-model src="#bastoncino" position="0 0 0" rotation="40 180 0" scale="2 2 2"></a-gltf-model>
+      <a-light type="point" position="-0.167 1.905 -0.523" rotation="-90 0 0" target="#directionaltarget">
+        <a-entity id="pointtarget" position="0"></a-entity>
+      </a-light>
+    </a-marker>
+    <a-entity camera></a-entity>
+  </a-scene>
+  </body>
+</html>
